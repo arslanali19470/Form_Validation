@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form2</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(bk3.jpg);
+            background-size: cover;
+            height: 70vh;
+            width: 100%;
+        }
+
+        .form_box {
+            background-color: rgba(0, 0, 0, .45);
+            width: 35%;
+            margin-left: 15%;
+            margin-top: 5%;
+            height: 83vh;
+            padding: 2rem 3rem;
+            color: #fff;
+            /* position: relative; */
+
+            /* text-align: center; */
+        }
+
+        .head_account {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            /* display: block; */
+            /* margin-top: .5rem; */
+            font-weight: bold;
+        }
+
+        input {
+            width: 95%;
+            height: 2.5rem;
+            margin-top: .25rem;
+            border: none;
+            padding-left: 10px;
+        }
+
+        ::placeholder {
+            padding-left: 20px;
+        }
+
+        small {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .btn {
+            border: none;
+            color: #fff;
+            background-color: aqua;
+            width: 95%;
+            height: 2.5rem;
+        }
+
+        .btn:hover {
+            background-color: greenyellow;
+            /* color: aqua; */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .small_box {
+            position: relative;
+        }
+
+        ion-icon {
+            position: absolute;
+            color: black;
+            font-size: 25px;
+            font-weight: bolder;
+            position: absolute;
+            right: 1.75rem;
+            top: 1.75rem;
+            display: none;
+        }
+
+        small {
+            visibility: hidden;
+            color: red;
+            padding-left: 5px;
+        }
+
+        .error small {
+            visibility: visible;
+        }
+
+        .sucess input {
+            border: 2px solid greenyellow;
+        }
+
+        .sucess ion-icon[name=checkmark-circle] {
+            display: block;
+            color: greenyellow;
+        }
+
+        .error ion-icon[name=alert-circle] {
+            display: block;
+            color: red;
+        }
+
+
+        .error input {
+            border: 2px solid red;
+        }
+    </style>
+    <section class="form_box">
+        <h1 class="head_account">Create Account</h1>
+        <form action="">
+            <!-- username -->
+
+            <div class="username_box small_box  ">
+                <label for="username">Username:</label><br>
+                <input type="text" name="" id="username" placeholder="Enter your name here!">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-icon name="alert-circle"></ion-icon>
+                <small>Enter the correct user name</small>
+            </div>
+            <!-- user_email -->
+            <div class="useremail_box small_box  ">
+                <label for="useremail">Useremail:</label><br>
+                <input type="email" name="" id="useremail" placeholder="Enter your mail here!">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-icon name="alert-circle"></ion-icon>
+                <small>Enter the correct email </small>
+            </div>
+            <!-- Password -->
+            <div class="userpassword_box small_box ">
+                <label for="userpassword">Password:</label><br>
+                <input type="password" name="" id="userpassword" placeholder="Create your Password here!">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-icon name="alert-circle"></ion-icon>
+                <small>Create Strong Password 6 to 10 digits</small>
+            </div>
+            <!-- confirm Password -->
+            <div class="userconfirmpassword_box small_box ">
+                <label for="userconfirmpassword"> Confirm Password:</label><br>
+                <input type="password" name="" id="userconfirmpassword" placeholder="Enter your Password again!">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-icon name="alert-circle"></ion-icon>
+                <small>Enter the Passowrd again </small>
+            </div>
+            <button class="btn">Submit</button>
+
+        </form>
+    </section>
+
+
+    <script>
+        let username = document.querySelector("#username");
+        let useremail = document.querySelector("#useremail");
+        let userpassword = document.querySelector("#userpassword");
+        let userconfirmpassword = document.querySelector("#userconfirmpassword");
+        let error_para = document.querySelector("small");
+        let form = document.querySelector("form");
+        let small_box = document.querySelector(".small_box");
+        let username_box = document.querySelector(".username_box");
+        let useremail_box = document.querySelector(".useremail_box");
+        let userpassword_box = document.querySelector(".userpassword_box");
+        let userconfirmpassword_box = document.querySelector(".userconfirmpassword_box");
+
+        // ======================================================================================
+        // ======================================================================================
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            checkinputs();
+        })
+        function checkinputs() {
+
+            let usernameValue = username.value.trim();
+            let useremailValue = useremail.value.trim();
+            let userpasswordValue = userpassword.value.trim();
+            let userconfirmpasswordValue = userconfirmpassword.value.trim();
+
+            // ====================  USER NAME    ==========================
+
+            if (usernameValue == "") {
+                username_box.classList.add("error");
+
+            } else {
+                username_box.classList.remove("error");
+                username_box.classList.add("sucess");
+            }
+            // ====================  USER EMAIL    ==========================
+
+            if (useremailValue == "") {
+                useremail_box.classList.add("error");
+
+            } else {
+                useremail_box.classList.remove("error");
+                useremail_box.classList.add("sucess");
+            }
+            // ====================  password   ==========================
+            if (userpasswordValue == "") {
+                userpassword_box.classList.add("error");
+
+            } else {
+                userpassword_box.classList.remove("error");
+                userpassword_box.classList.add("sucess");
+            }
+            // ==================== confirm  password   ==========================
+            if (userconfirmpasswordValue == "") {
+                userconfirmpassword_box.classList.add("error");
+
+            } else if (userconfirmpasswordValue !== userpasswordValue) {
+                error_para.textContent = "The password is not match "
+                userconfirmpassword_box.classList.add("error");
+
+            }
+            else {
+                userconfirmpassword_box.classList.remove("error");
+                userconfirmpassword_box.classList.add("sucess");
+            }
+            // ================== 
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
